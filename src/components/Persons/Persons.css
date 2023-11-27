@@ -1,0 +1,15 @@
+.filtered-numbers {
+    font-weight: bold;
+}
+
+
+.all-numbers {
+    font-weight: bold;
+}
+
+.phone-entry {
+    padding-bottom: 0.2rem;
+    padding-top: 0.2rem;
+    border-bottom: 3px solid orange;
+    width: max-content;
+}

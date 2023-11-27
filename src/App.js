@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import Filter from './components/Filter/Filter'
+import PersonForm from './components/PersonForm/PersonForm'
+import Persons from './components/Persons/Persons'
+
 const App = () => {
 
   const [persons, setPersons] = useState([{ name: 'Arto Hellas', phone: '040-123456' },
@@ -40,28 +44,11 @@ const App = () => {
 
   return (
     <div>
-     <h2>Phonebook</h2>
-     filter shown with <input value={filter} onChange={handleFilter} />
-     <form onSubmit={handleSubmit}>
-      add a new
-      <div>
-        name: <input value={newName} onChange={handleNewName} /> {/* controlled input */}
-      </div>
-      <div>
-        number: <input value={newPhone} onChange={handleNewPhone} />
-      </div>
-      <div>
-      <button type="submit">add</button>
-      </div>
-    </form>
-    
-    <h2>Numbers</h2>
-      <h3>found numbers</h3>
-      {/* use regex to test for alphabetical name search */}
-      {persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0 && /^[1-zA-Z]+$/.test(filter)).map(person => <li key={person.name}>{person.name} {person.phone}</li>)}
-            
-      <h3>all names</h3>
-      {persons.map(person => <li key={person.name}>{person.name} {person.phone}</li>)}
+      <h2>Phonebook</h2>
+      <Filter filter={filter} handleFilter={handleFilter} />
+      <PersonForm handleSubmit={handleSubmit} newName={newName} handleNewName={handleNewName} newPhone={newPhone} handleNewPhone={handleNewPhone} />
+     
+      <Persons persons={persons} filter={filter}/>
     </div>
   )
 }

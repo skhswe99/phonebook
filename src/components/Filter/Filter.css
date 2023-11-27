@@ -1,0 +1,7 @@
+.filter {
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 0.5rem;
+    width: 100% - 2rem;
+    margin: 0.5rem 0;
+}
