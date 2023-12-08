@@ -11,10 +11,10 @@ const App = () => {
   //                                         { name: 'Dan Abramov', number: '12-43-234345', id: 3},
   //                                         { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4}
   //                                         ])
-  
+  const baseURL = 'http://localhost:3001/persons'
   const [persons, setPersons] = useState([])
   useEffect( () => {
-    axios.get('http://localhost:3001/persons')
+    axios.get(baseURL)
           .then(res => setPersons(res.data))
   }, [])
   
@@ -29,6 +29,7 @@ const App = () => {
         alert(`${newName} is already added to phoneboook`)
       } else {
         setPersons([...persons, {name: newName, phone: newPhone}]) // add new name to phonebook
+        axios.post(baseURL, {name: newName, phone: newPhone})
       }
     }
 
