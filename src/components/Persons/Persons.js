@@ -1,6 +1,6 @@
 import './Persons.css'
 
-const Persons = ({persons, filter}) => {
+const Persons = ({persons, filter, handleDelete}) => {
     return (
         <>
             <h2 className='filtered-numbers'>Filtered Numbers</h2>
@@ -13,7 +13,7 @@ const Persons = ({persons, filter}) => {
             <br />
             <h2 className='all-numbers'>All Numbers</h2>
             <ul>
-                {persons.map(person => <li key={person.name}>{person.name} {person.phone}</li>)}
+                {persons.map(person => <li key={person.name}>{person.name} {person.phone}<button onClick={()=>handleDelete(person)}>delete</button></li>)}
             </ul>
         </>
     )

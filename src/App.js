@@ -50,6 +50,14 @@ const App = () => {
     setFilter(event.target.value)
   }
 
+  const handleDelete = (person) => {
+    const name = person.name
+    const id = person.id
+    if (window.confirm(`Delete user ${name}?`)) {
+      setPersons(persons.filter(person => person.id !== id))
+      phonebook.deleteEntry(person.id)
+    }
+  }
   console.log(filter)
 
   return (
@@ -57,7 +65,7 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter filter={filter} handleFilter={handleFilter} />
       <PersonForm handleSubmit={handleSubmit} newName={newName} handleNewName={handleNewName} newPhone={newPhone} handleNewPhone={handleNewPhone} />
-      <Persons persons={persons} filter={filter}/>
+      <Persons persons={persons} filter={filter} handleDelete={handleDelete}/>
     </div>
   )
 }

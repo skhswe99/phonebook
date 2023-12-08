@@ -11,9 +11,14 @@ const getAll = () => {
 
 const addEntry = (entry) => {
   axios.post(baseURL, entry)
-        .then(res => {
-          console.log(res.data)
-        })
+        // .then(res => {
+        //   console.log(res.data)
+        // })
 }
 
-export default { getAll, addEntry }
+const deleteEntry = (id) => {
+  console.log(`${baseURL}/${id}`)
+  axios.delete(`${baseURL}/${id}`)
+}
+
+export default { getAll, addEntry, deleteEntry }
