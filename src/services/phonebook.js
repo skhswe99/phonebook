@@ -2,11 +2,18 @@ import axios from "axios"
 
 const baseURL = 'http://localhost:3001/persons'
 const getAll = () => {
-    return axios.get(`${baseURL}`)
+    return axios.get(baseURL)
     .then(res => {
     //   console.log(res.data)
       return res.data
     })
 }
 
-export default { getAll }
+const addEntry = (entry) => {
+  axios.post(baseURL, entry)
+        .then(res => {
+          console.log(res.data)
+        })
+}
+
+export default { getAll, addEntry }
