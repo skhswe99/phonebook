@@ -5,3 +5,10 @@
     width: 100% - 2rem;
     margin: 0.5rem 0;
 }
+
+@media (min-width: 720px) {
+    .filter {
+        width: 50%;
+    }
+}
+
