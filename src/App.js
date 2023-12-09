@@ -4,6 +4,7 @@ import PersonForm from './components/PersonForm/PersonForm'
 import Persons from './components/Persons/Persons'
 // import axios from 'axios'
 import phonebook from './services/phonebook'
+import Message from './components/Message/Message'
 
 const App = () => {
 
@@ -22,6 +23,9 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newPhone, setNewPhone] = useState('')
   const [filter, setFilter] = useState('')
+  const [message, setMessage] = useState({})
+
+  // console.log(' message = ', message)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -34,10 +38,18 @@ const App = () => {
           console.log('sameEntries = ', sameEntries)
           phonebook.updateEntry(currentPerson.id, {name: currentPerson.name, number: newPhone})
           setPersons([...sameEntries, {...currentPerson, number: newPhone}])
+          setMessage({text: `Updated ${newName}'s phone number`, warning: false}) // to display message
+          setTimeout(() => { // to clear messge after 2500ms
+            setMessage({})
+          }, 2500);
         }
       } else {
-        setPersons([...persons, {name: newName, phone: newPhone}]) // add new entry to phonebook
-        phonebook.addEntry({name: newName, phone: newPhone}) // save new entry to backend
+        setPersons([...persons, {name: newName, number: newPhone}]) // add new entry to phonebook
+        phonebook.addEntry({name: newName, number: newPhone}) // save new entry to backend
+        setMessage({text: `Added ${newName}`, warning: false}) // to display message
+        setTimeout(() => { // to clear messge after 2500ms
+          setMessage({})
+        }, 2500);
       }
     }
 
@@ -69,6 +81,7 @@ const App = () => {
 
   return (
     <div>
+      <Message message={message} />
       <h2>Phonebook</h2>
       <Filter filter={filter} handleFilter={handleFilter} />
       <PersonForm handleSubmit={handleSubmit} newName={newName} handleNewName={handleNewName} newPhone={newPhone} handleNewPhone={handleNewPhone} />
