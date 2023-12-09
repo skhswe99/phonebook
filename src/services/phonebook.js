@@ -24,10 +24,13 @@ const deleteEntry = (id) => {
 }
 
 const updateEntry = (id, data) => {
-  axios.put(`${baseURL}/${id}`, data)
+  return axios.put(`${baseURL}/${id}`, data)
         // .then(res => {
         //   console.log(res.data)
         // })
+        .catch(err => {
+          return err
+        })
 }
 
 export default { getAll, addEntry, deleteEntry, updateEntry }
