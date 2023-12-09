@@ -26,8 +26,15 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     if (newName) {
-      if (persons.find(person => person.name.toLowerCase() === newName.toLowerCase())) {
-        alert(`${newName} is already added to phoneboook`)
+      const currentPerson = persons.find(person => person.name.toLowerCase() === newName.toLowerCase())
+      // console.log('currentPerson = ', currentPerson)
+      if (currentPerson) {
+        if (window.confirm(`Update ${currentPerson.name}'s number?`) ) {
+          const sameEntries = persons.filter(person => person.name.toLowerCase() !== newName.toLowerCase())
+          console.log('sameEntries = ', sameEntries)
+          phonebook.updateEntry(currentPerson.id, {name: currentPerson.name, number: newPhone})
+          setPersons([...sameEntries, {...currentPerson, number: newPhone}])
+        }
       } else {
         setPersons([...persons, {name: newName, phone: newPhone}]) // add new entry to phonebook
         phonebook.addEntry({name: newName, phone: newPhone}) // save new entry to backend

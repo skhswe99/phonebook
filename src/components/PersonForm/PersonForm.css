@@ -5,3 +5,10 @@
     padding: 0.5rem;
     margin: 0.5rem 0;
 }    
+
+@media (min-width: 720px) {
+    .form {
+        width: 50%;
+        margin: 0.5rem auto;
+    }
+}

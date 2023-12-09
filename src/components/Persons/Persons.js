@@ -13,7 +13,7 @@ const Persons = ({persons, filter, handleDelete}) => {
             <br />
             <h2 className='all-numbers'>All Numbers</h2>
             <ul>
-                {persons.map(person => <li key={person.name}>{person.name} {person.phone}<button onClick={()=>handleDelete(person)}>delete</button></li>)}
+                {persons.map(person => <li key={person.name}>{person.name} {person.number} <button onClick={()=>handleDelete(person)}>delete</button></li>)}
             </ul>
         </>
     )
