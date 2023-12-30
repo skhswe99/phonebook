@@ -7,7 +7,7 @@ const Persons = ({persons, filter, handleDelete}) => {
             
             {/* use regex to test for alphabetical name search */}
             <ul>
-                {persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0 && /^[1-zA-Z]+$/.test(filter)).map(person => <li key={person.name} className='phone-entry'>{person.name} {person.phone}</li>)}
+                {persons.filter(person => person.name.toLowerCase().indexOf(filter.toLowerCase()) >= 0 && /^[1-zA-Z]+$/.test(filter)).map(person => <li key={person.name} className='phone-entry'>{person.name} {person.number}</li>)}
             </ul>
 
             <br />

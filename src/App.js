@@ -77,7 +77,7 @@ const App = () => {
       phonebook.deleteEntry(person.id)
     }
   }
-  console.log(filter)
+  // console.log(filter)
 
   return (
     <div>
